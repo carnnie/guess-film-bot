@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "guess-film-bot"
+version = "0.1.0"
+description = ""
+authors = ["ilya <carn2010@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.14.0"
+environs = "^11.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
