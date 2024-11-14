@@ -37,7 +37,7 @@ def get_env_variable(var_name: str, cast=str) -> str:
 
 
 BASE_PATH: str = Path(__file__).resolve().parent.parent
-RESUORCES_PATH: str = os.path.join(BASE_PATH, "res/")
+RESOURCES_PATH: str = os.path.join(BASE_PATH, "res/")
 
 BOT_TOKEN: str = get_env_variable("BOT_TOKEN")
 
@@ -50,3 +50,5 @@ MONGO_DATABASE: str = get_env_variable("MONGO_INITDB_DATABASE")
 MONGO_CONNECTION_URI: str = (
     f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_HOST}:{MONGO_PORT}/?retryWrites=true&w=majority&appName=Cluster0"
 )
+
+FILMS_FILE_PATH: str = os.path.join(RESOURCES_PATH, get_env_variable("FILMS_FILE_PATH"))

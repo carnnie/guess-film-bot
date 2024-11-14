@@ -28,4 +28,9 @@ class Player:
 
 @dataclass
 class Film:
-    pass
+    _id: int
+    name: str
+    year: int
+    genre: str
+    description: Optional[str] = None
+    image_path: Optional[str] = None
