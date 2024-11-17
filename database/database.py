@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from pymongo.database import Database
 
-from src.config import MONGO_CONNECTION_URI, MONGO_DATABASE
+from config.config import MONGO_CONNECTION_URI, MONGO_DATABASE
 
 
 def get_database() -> Database:

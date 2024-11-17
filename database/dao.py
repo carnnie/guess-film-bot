@@ -4,8 +4,8 @@ from typing import List, Tuple, Optional, Dict
 from pymongo import ReplaceOne
 from pymongo.database import Database
 
-from src.config import FILMS_FILE_PATH
-from src.models import Film, Player
+from config.config import FILMS_FILE_PATH
+from database.models import Film, Player
 
 
 class ObjectDoesNotExist(Exception):
@@ -48,6 +48,14 @@ class PlayerDao:
             )
         return player, created
 
+    def get(self, player_id: int) -> Player:
+        player = self.data_source.find_one({'_id': player_id})
+
+        if not player:
+            raise ObjectDoesNotExist(f"Player with id {player_id} does not exist.")
+        
+        return Player(**player)
+
     def save_many(self, players: List[Player]) -> None:
         if not players:
             return
@@ -61,7 +69,7 @@ class PlayerDao:
                     "attempts": player.attempts,
                     "score": player.score,
                 },
-                upsert=True
+                upsert=True,
             )
             for player in players
         ]

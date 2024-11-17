@@ -43,12 +43,12 @@ BOT_TOKEN: str = get_env_variable("BOT_TOKEN")
 
 ''' Mongo settings '''
 MONGO_HOST: str = get_env_variable("MONGO_HOST")
-MONGO_PORT: str = get_env_variable("MONGO_PORT", int)
 MONGO_USERNAME: str = get_env_variable("MONGO_INITDB_ROOT_USERNAME")
 MONGO_PASSWORD: str = get_env_variable("MONGO_INITDB_ROOT_PASSWORD")
 MONGO_DATABASE: str = get_env_variable("MONGO_INITDB_DATABASE")
 MONGO_CONNECTION_URI: str = (
-    f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_HOST}:{MONGO_PORT}/?retryWrites=true&w=majority&appName=Cluster0"
+    f"mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_HOST}/?retryWrites=true&w=majority&appName=Cluster0"
 )
 
 FILMS_FILE_PATH: str = os.path.join(RESOURCES_PATH, get_env_variable("FILMS_FILE_PATH"))
+NUMBER_OF_ATTEMPTS: int = get_env_variable("NUMBER_OF_ATTEMPTS", int)
