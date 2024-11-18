@@ -32,23 +32,6 @@ async def process_start_command(message: Message, game: GuessFilm):
     game.players_dao.create(player)
 
 
-@router.message(Command(commands="help"))
-async def process_help_command(message: Message):
-    """Sends game rules and a list of commands."""
-
-    await message.answer(
-        "Правила игры:\n\nЯ присылаю кадр из фильма, "
-        "а вам нужно назвать его название.\n\n"
-        "Пример ответа: Форрест Гамп\n\n"
-        "Доступные команды:\n"
-        "/play - начать играть\n"
-        "/sur - сдаться\n"
-        "/cancel - отменить игру\n"
-        "/stat - посмотреть статистику\n"
-        "/help - правила игры и список команд\n\nДавай сыграем?"
-    )
-
-
 @router.message(Command(commands="play"))
 async def process_play_command(message: Message, game: GuessFilm, state: FSMContext):
     """Process the play command for the film guessing game.

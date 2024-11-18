@@ -31,13 +31,6 @@ class GuessFilm:
         self.players_dao = PlayerDao(database)
         self.players = {}
 
-    # def __enter__(self):
-    #     return self
-
-    # def __exit__(self, exc_type, exc_value, tb):
-    #     """Saves all cached players to the database on exit."""
-    #     self.players_dao.save_many(self.players.values())
-
     def get_player(self, player_id: int) -> Player:
         """Gets a player by id from the cache if exists othervise from DB.
 
