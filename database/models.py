@@ -30,6 +30,17 @@ class Player:
 
 @dataclass
 class Film:
+    """Class representing a Film object.
+
+    Properties:
+        _id: Unique identifier for film.
+        name: Name of the film.
+        year: Year in which the film was released.
+        genre: Genre of the film.
+        description: Additional information about the film.
+        image_path: Path to the film image.
+
+    """
     _id: int
     name: str
     year: int

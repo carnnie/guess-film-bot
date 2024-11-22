@@ -49,11 +49,11 @@ class PlayerDao:
         return player, created
 
     def get(self, player_id: int) -> Player:
-        player = self.data_source.find_one({'_id': player_id})
+        player = self.data_source.find_one({"_id": player_id})
 
         if not player:
             raise ObjectDoesNotExist(f"Player with id {player_id} does not exist.")
-        
+
         return Player(**player)
 
     def save_many(self, players: List[Player]) -> None:
@@ -94,10 +94,10 @@ class FilmDao:
         self.data_source = data_source[self.collection_name]
 
     def all(self) -> List[Film]:
-        """Retrieve all historical events from the database.
+        """Retrieve all films from the database.
 
         Returns:
-            A list of `HistoricalEvent` objects.
+            A list of `Film` objects.
 
         """
 

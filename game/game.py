@@ -1,3 +1,4 @@
+from random import shuffle
 from typing import Dict, Optional, Tuple
 
 from config.config import NUMBER_OF_ATTEMPTS
@@ -65,15 +66,17 @@ class GuessFilm:
         Returns:
             A next film for guessing.
         """
-
-        for film in self.films.values():
+        films = list(self.films.values())
+        shuffle(films)
+        
+        for film in films:
             if film._id not in player.guessed_films:
                 return film
 
         player.guessed_films = []
         return self._get_film_for_player(player)
 
-    def _get_hint(film: Film, attempts_left: int) -> str:
+    def _get_hint(self, film: Film, attempts_left: int) -> str:
         """Returns a hint for guessing film depending on number of attempts.
 
         If there are more then enough attempts it doesn't return a hint.
@@ -92,7 +95,7 @@ class GuessFilm:
         else:
             return f'Неверно.'
 
-    def _validate_answer(answer: str, film: Film):
+    def _validate_answer(self, answer: str, film: Film):
         """Validates player's answer by comparison with name of current film.
 
         Args:
@@ -142,15 +145,15 @@ class GuessFilm:
         film = self.films[player.current_film]
         player.attempts -= 1
 
-        if player.attempts < 0:
-            return "lose", self.surrender(player)
+        if self._validate_answer(answer, film):
+            player.guessed_films.append(player.current_film)
+            player.current_film = None
+            player.score += 5 + player.attempts * 2
+            self.players[player._id] = player
+            return "win", film
         else:
-            if self._validate_answer(answer, film):
-                player.guessed_films.append(player.current_film)
-                player.current_film = None
-                player.score += 5 + player.attempts * 2
-                self.players[player._id] = player
-                return "win", film
+            if player.attempts == 0:
+                return "lose", self.surrender(player)
             else:
                 self.players[player._id] = player
                 return self._get_hint(film, player.attempts), None

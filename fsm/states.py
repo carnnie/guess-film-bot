@@ -1,4 +1,4 @@
-from aiogram.fsm.state import State
+from aiogram.fsm.state import State, StatesGroup
 
-
-in_game_state = State()
+class FSMFillForm(StatesGroup):
+    in_game_state = State()

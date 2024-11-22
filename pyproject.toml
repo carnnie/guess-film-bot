@@ -11,6 +11,8 @@ aiogram = "^3.14.0"
 environs = "^11.1.0"
 dnspython = "^2.7.0"
 pymongo = "^4.10.1"
+redis = "^5.2.0"
+aioredis = "^2.0.1"
 
 
 [build-system]

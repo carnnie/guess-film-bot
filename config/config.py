@@ -41,7 +41,7 @@ RESOURCES_PATH: str = os.path.join(BASE_PATH, "res/")
 
 BOT_TOKEN: str = get_env_variable("BOT_TOKEN")
 
-''' Mongo settings '''
+""" Mongo settings """
 MONGO_HOST: str = get_env_variable("MONGO_HOST")
 MONGO_USERNAME: str = get_env_variable("MONGO_INITDB_ROOT_USERNAME")
 MONGO_PASSWORD: str = get_env_variable("MONGO_INITDB_ROOT_PASSWORD")
@@ -51,4 +51,5 @@ MONGO_CONNECTION_URI: str = (
 )
 
 FILMS_FILE_PATH: str = os.path.join(RESOURCES_PATH, get_env_variable("FILMS_FILE_PATH"))
+
 NUMBER_OF_ATTEMPTS: int = get_env_variable("NUMBER_OF_ATTEMPTS", int)
